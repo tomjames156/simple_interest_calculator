@@ -5,8 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Import Font Awesome Kit -->
+    <script src="https://kit.fontawesome.com/3dc4ae978d.js"
+    sorigin="anonymous"></script>
 </head>
 <body>
-    
+    <form id="years" action="index.html">
+        <div class="principal">
+            <label for="principal">Enter <a href="#" id="principal-info">Principal</a><i class="fa-solid fa-circle-info"></i></label>
+            <input type="text" name="principal" id="principal" placeholder="Enter Amount">  
+            <p>the amount invested before returns</p>  
+        </div>       
+         
+        <div class="time">
+            <p for="time-frame">Select Time Frame</p>
+            <label for="days"></label>
+            <input type="checkbox" value="days" id="days" name="days">Day(s)</input>
+            <label for="months"></label>
+            <input type="checkbox" value="months" id="months" name="months">Month(s)</input>
+            <label for="years"></label>
+            <input type="checkbox" value="years" id="years" name="years">Year(s)</input>
+
+            <div class="days default-hide">
+                <label for="days">Choose Number of Day(s)</label>
+                <input type="number" name="days" id="days">
+            </div>
+
+            <div class="months default-hide">
+                <label for="months">Choose Number of Month(s)</label>
+                <select name="months" id="months" size="1"></select>
+            </div>
+
+            <div class="years default-hide">
+                <label for="year">Choose Number Of Year(s)</label>
+                <select name="years" id="years" size="1"></div>select>
+            </div>
+        </div>
+
+        <div class="interest-type">
+            <label for="simple"></label>
+            <input type="radio" name="interest" value="simple" id="simple">Simple interest
+            <label for="compound"></label>
+            <input type="radio" name="interest" value="compound" id="compound">Compound Interest
+        </div>
+
+        <div class="submit">
+            <input type="submit" name="interest" value="Compute Interest">
+        </div>
+    </form>
+<script src="simple_interest.js"></script>
 </body>
 </html>

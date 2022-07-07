@@ -3,3 +3,17 @@
     margin: 0;
     padding: 0;
 }
+
+a#principal-info{
+    color: black;
+    text-decoration: none;
+}
+
+i.fa-circle-info{
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.default-hide{
+    display: none;
+}
