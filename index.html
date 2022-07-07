@@ -15,19 +15,19 @@
 <body>
     <form id="years" action="index.html">
         <div class="principal">
-            <label for="principal">Enter <a href="#" id="principal-info">Principal</a><i class="fa-solid fa-circle-info"></i></label>
+            <label for="principal">Enter <a href="#" id="principal-info">Principal </a><i class="fa-solid fa-circle-info"></i></label>
             <input type="text" name="principal" id="principal" placeholder="Enter Amount">  
-            <p>the amount invested before returns</p>  
+            <p class="principal-meaning default-hide">the amount invested before returns</p>  
         </div>       
          
         <div class="time">
             <p for="time-frame">Select Time Frame</p>
-            <label for="days"></label>
-            <input type="checkbox" value="days" id="days" name="days">Day(s)</input>
-            <label for="months"></label>
-            <input type="checkbox" value="months" id="months" name="months">Month(s)</input>
+            <label for="timeframe_days"></label>
+            <input type="checkbox" value="timeframe_days" id="timeframe_days" name="timeframe_days" oninput="showTimeFrameOption('days', this)">Day(s)</input>
+            <label for="timeframe_months"></label>
+            <input type="checkbox" value="timeframe_months" id="timeframe_months" name="timeframe_months" oninput="showTimeFrameOption('months', this)">Month(s)</input>
             <label for="years"></label>
-            <input type="checkbox" value="years" id="years" name="years">Year(s)</input>
+            <input type="checkbox" value="timeframe_years" id="timeframe_years" name="timeframe_years" oninput="showTimeFrameOption('years', this)">Year(s)</input>
 
             <div class="days default-hide">
                 <label for="days">Choose Number of Day(s)</label>
@@ -41,7 +41,11 @@
 
             <div class="years default-hide">
                 <label for="year">Choose Number Of Year(s)</label>
-                <select name="years" id="years" size="1"></div>select>
+                <select name="years" id="years" size="1"></select>
+            </div>
+
+            <div class="change-timeframe default-hide">
+                <button>Change Timeframe</button>
             </div>
         </div>
 

@@ -7,6 +7,7 @@
 a#principal-info{
     color: black;
     text-decoration: none;
+    cursor: default;
 }
 
 i.fa-circle-info{
@@ -16,4 +17,8 @@ i.fa-circle-info{
 
 .default-hide{
     display: none;
+}
+
+p.principal-meaning:hover{
+    display: block;
 }
