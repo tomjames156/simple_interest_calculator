@@ -8,6 +8,11 @@
     <!-- Link CSS -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- Link Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Work+Sans&display=swap" rel="stylesheet">
+
     <!-- Import Font Awesome Kit -->
     <script src="https://kit.fontawesome.com/3dc4ae978d.js"
     sorigin="anonymous"></script>
@@ -15,19 +20,35 @@
 <body>
     <form id="years" action="index.html">
         <div class="principal">
-            <label for="principal">Enter <a href="#" id="principal-info">Principal </a><i class="fa-solid fa-circle-info"></i></label>
-            <input type="text" name="principal" id="principal" placeholder="Enter Amount">  
+            <p>Enter <a href="#" id="principal-info">Principal </a><i class="fa-solid fa-circle-info"></i></p>
+            <label for="currency">Currency:</label>
+            <select name="currencies" id="currencies" size="1">
+                <option value="$">Dollar ($)</option>
+                <option value="£">Pound Sterling (£)</option>
+                <option value="€">Euro (€)</option>
+                <option value="₦">Nigerian Naira (₦)</option>
+            </select>  
+            <label for="principal"></label>
+            <input type="text" name="principal" id="principal" placeholder="Enter Amount" required>
             <p class="principal-meaning default-hide">the amount invested before returns</p>  
         </div>       
          
         <div class="time">
             <p for="time-frame">Select Time Frame</p>
-            <label for="timeframe_days"></label>
-            <input type="checkbox" value="timeframe_days" id="timeframe_days" name="timeframe_days" oninput="showTimeFrameOption('days', this)">Day(s)</input>
-            <label for="timeframe_months"></label>
-            <input type="checkbox" value="timeframe_months" id="timeframe_months" name="timeframe_months" oninput="showTimeFrameOption('months', this)">Month(s)</input>
-            <label for="years"></label>
-            <input type="checkbox" value="timeframe_years" id="timeframe_years" name="timeframe_years" oninput="showTimeFrameOption('years', this)">Year(s)</input>
+            <div class="time-frames">
+                <div>
+                    <label for="timeframe_days"></label>
+                    <input type="checkbox" value="timeframe_days" id="timeframe_days" name="timeframe_days" oninput="showTimeFrameOption('days', this)">Day(s)</input>
+                </div>
+                <div>
+                    <label for="timeframe_months"></label>
+                    <input type="checkbox" value="timeframe_months" id="timeframe_months" name="timeframe_months" oninput="showTimeFrameOption('months', this)">Month(s)</input>
+                </div>
+                <div>
+                    <label for="years"></label>
+                    <input type="checkbox" value="timeframe_years" id="timeframe_years" name="timeframe_years" oninput="showTimeFrameOption('years', this)">Year(s)</input>
+                </div>
+            </div>
 
             <div class="days default-hide">
                 <label for="days">Choose Number of Day(s)</label>
@@ -43,23 +64,42 @@
                 <label for="year">Choose Number Of Year(s)</label>
                 <select name="years" id="years" size="1"></select>
             </div>
-
-            <div class="change-timeframe default-hide">
-                <button>Change Timeframe</button>
-            </div>
+            
         </div>
 
         <div class="interest-type">
-            <label for="simple"></label>
-            <input type="radio" name="interest" value="simple" id="simple">Simple interest
-            <label for="compound"></label>
-            <input type="radio" name="interest" value="compound" id="compound">Compound Interest
+            <p>Choose Interest Type</p>
+            <div>
+                <label for="simple"></label>
+                <input type="radio" name="interest" value="simple" id="simple">Simple interest
+            </div>
+            <div>
+                <label for="compound"></label>
+                <input type="radio" name="interest" value="compound" id="compound">Compound Interest
+            </div>
         </div>
 
+        <div class="interest-rate">
+            <!-- <p>Select Interest Rate</p> -->
+            <div class="rate">
+                <!-- <label for="rate"></label>
+                <input type="range" id="rate" min="0.1" max="100" step="0.5">
+                <span id="current-rate"></span> -->
+                <label for="rate">Input Interest Rate in (%) </label>
+                <input type="text" name="rate" id="rate" required>
+                <span id="current-rate"></span>
+            </div>
+        </div>
+
+
         <div class="submit">
-            <input type="submit" name="interest" value="Compute Interest">
+            <input type="submit" id="submit" name="interest" value="Compute Interest">
         </div>
     </form>
+
+    <div class="result">
+        <p id="result"></p>
+    </div>
 <script src="simple_interest.js"></script>
 </body>
 </html>

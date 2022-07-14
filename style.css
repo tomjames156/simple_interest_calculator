@@ -4,6 +4,17 @@
     padding: 0;
 }
 
+body{
+    padding: 2rem;
+    font-family: "Poppins", sans-serif;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
 a#principal-info{
     color: black;
     text-decoration: none;
@@ -13,6 +24,7 @@ a#principal-info{
 i.fa-circle-info{
     font-size: 0.75rem;
     cursor: pointer;
+    margin-right: 1rem;
 }
 
 .default-hide{
@@ -21,4 +33,61 @@ i.fa-circle-info{
 
 p.principal-meaning:hover{
     display: block;
+}
+
+div.interest-type, div.time-frames{
+    display: flex;
+    column-gap: 2rem;
+}
+
+div.interest-type div, div.time-frames div{
+    display: flex;
+    column-gap: 0.25rem;
+}
+
+input{
+    font-family: "Poppins", sans-serif;
+}
+
+select#currencies{
+    font-family: "Poppins", sans-serif;
+}
+
+/* input[type="range"]{
+    cursor: pointer;
+    -webkit-appearance: none;
+    width: 150px;
+    background-color: white;
+}
+
+input[type="range"]::-webkit-slider-runnable-track{
+    background-color: green;
+    height: 10px;
+    border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -3px;
+    background-color: darkgreen;
+    height: 16px;
+    width: 16px;   
+    border-radius: 8px;
+} */
+
+div.rate{
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+div.submit input{
+    padding: 0.5rem;
+    background: darkslategray;
+    border: none;
+    border-radius: 0.25rem;
+    color: white;
+    text-shadow: 1px 1px 3px black;
+    font-weight: bold;
 }
