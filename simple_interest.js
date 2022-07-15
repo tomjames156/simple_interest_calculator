@@ -8,8 +8,10 @@ let principal = document.getElementById("principal");
 let currency = document.getElementById("currencies");
 const interestRateContainer = document.querySelector("div.interest-rate");
 let currentRate = document.getElementById("current-rate");
+const simple = document.getElementById("simple");
+const compound = document.getElementById("compound");
 const computeInterest = document.getElementById("submit");
-const result = document.getElementById("result");
+const interest = document.getElementById("result");
 
 function addOptions(start, stop, receiver, option){
     for(i = start; i < (stop + 1); i++){
@@ -47,6 +49,13 @@ infoBtn.addEventListener("mouseout", () =>{
     principalDef.classList.add("default-hide");
 })
 
+function validateInput(receiver){
+    if(receiver.value < 1){
+        receiver.value = "";
+        alert("Enter a positive number");
+    }
+}
+
 interestRate.addEventListener("input", () =>{
     currentRate.innerHTML = "";
     currentRate.innerHTML += `${interestRate.value}%`;
@@ -63,7 +72,7 @@ function getInterestType(){
 function calculateInterest(amount, percentage, time, time_measure, interest_form, currency_type="$"){
     let interest = 0;
     let result = 0
-    let rate = parseFloat(percentage/100);
+    let rate = parseFloat(percentage / 100);
 
     if((interest_form == "simple") && (time_measure == "years")){
         interest = parseFloat(amount * rate * time);
@@ -79,11 +88,11 @@ function calculateInterest(amount, percentage, time, time_measure, interest_form
         result = result ** time;
         result *= amount;
     }else if((interest_form == "compound") && (time_measure == "months")){
-        result = parseFloat(1 + (rate/12));
+        result = parseFloat(1 + (rate / 12));
         result = parseFloat(result ** time);
         result *= amount;
     }else if((interest_form == "compound") && (time_measure == "days")){
-        result = parseFloat(1 + (rate/365));
+        result = parseFloat(1 + (rate / 365));
         result = parseFloat(result ** time);
         result *= amount;
     }
@@ -96,6 +105,8 @@ computeInterest.addEventListener("click", () =>{
     let number_of_x = 0;
     let rate = 0;
     let principal_amount = 0;
+    let total_amount = 0;
+    let interest_amount = 0;
     let timeframe = "";
     let currency_symbol = ""; 
     let interest_type = "";
@@ -117,5 +128,17 @@ computeInterest.addEventListener("click", () =>{
         }
     }    
 
-    console.log(calculateInterest(principal_amount, rate, number_of_x, timeframe, interest_type, currency_symbol));
+    if((simple.checked == false) && (compound.checked == false)){
+        alert("Choose a type of interest");
+    }
+
+    total_amount = (calculateInterest(principal_amount, rate, number_of_x, timeframe, interest_type, currency_symbol));
+    interest_amount = (total_amount.slice(1, total_amount.length) - principal_amount).toFixed(2)
+
+    interest.innerHTML = `<br> Principal Invested = ${principal_amount} <br>
+    Investment rate per ${timeframe.slice(0, timeframe.length -1)} = ${rate}<br>
+    Number of times interest was collected = ${number_of_x}<br>
+    Total amount after interest = ${total_amount}<br>
+    Total interest after investment = $${interest_amount}
+    `;
 })

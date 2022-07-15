@@ -47,10 +47,15 @@ div.interest-type div, div.time-frames div{
 
 input{
     font-family: "Poppins", sans-serif;
+    border: solid 2px darkslategray;
+    padding-left: 0.5rem;
+    border-radius: 0.45rem;
 }
 
-select#currencies{
+select{
     font-family: "Poppins", sans-serif;
+    border: solid 2px darkslategray;
+    border-radius: 0.45rem;
 }
 
 /* input[type="range"]{
@@ -84,7 +89,7 @@ div.rate{
 
 div.submit button{
     padding: 0.5rem 1rem;
-    background: darkslategray;
+    background: teal;
     border: none;
     font-family: 'Poppins', sans-serif;
     border-radius: 0.25rem;

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Web App - Simple Interest Calculator</title>
     <!-- Link CSS -->
     <link rel="stylesheet" href="style.css">
 
@@ -29,7 +29,7 @@
                 <option value="₦">Nigerian Naira (₦)</option>
             </select>  
             <label for="principal"></label>
-            <input type="text" name="principal" id="principal" placeholder="Enter Amount" required>
+            <input type="text" name="principal" id="principal" placeholder="Enter Amount"  oninput="validateInput(this)" required>
             <p class="principal-meaning default-hide"><small>the amount invested before returns</small></p>  
         </div>       
          
@@ -52,7 +52,7 @@
 
             <div class="days default-hide">
                 <label for="days">Choose Number of Day(s)</label>
-                <input type="number" name="days" id="days">
+                <input type="number" name="days" id="days" oninput="validateInput(this)">
             </div>
 
             <div class="months default-hide">
