@@ -83,7 +83,7 @@ div.rate{
 }
 
 div.submit button{
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     background: darkslategray;
     border: none;
     font-family: 'Poppins', sans-serif;

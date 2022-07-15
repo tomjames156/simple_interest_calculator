@@ -34,8 +34,9 @@ function showTimeFrameOption(timeframe, receiver){
     }
     resetshownTimeFrameOptions();
     document.querySelector(`div.${timeframe}`).classList.remove("default-hide");
-    document.querySelector(`div.${timeframe}`).classList.add("active");
+    document.querySelector(`div.${timeframe}`).classList.add("active");    
     receiver.checked = true;
+    document.querySelector("span#time").innerHTML = timeframe.slice(0, timeframe.length -1);
 }
 
 infoBtn.addEventListener("mouseover", () => {
@@ -65,29 +66,29 @@ function calculateInterest(amount, percentage, time, time_measure, interest_form
     let rate = parseFloat(percentage/100);
 
     if((interest_form == "simple") && (time_measure == "years")){
-        interest = parseFloat((amount * percentage * time) / 100);
+        interest = parseFloat(amount * rate * time);
         result = parseFloat(amount + interest);
     }else if((interest_form == "simple") && (time_measure == "months")){
-        interest = parseFloat((amount * percentage * time) / 1200);
+        interest = parseFloat((amount * rate * time) / 12);
         result = parseFloat(amount + interest);
     }else if((interest_form == "simple") && (time_measure == "days")){
-        interest = parseFloat((amount * percentage * time) / 36500);
+        interest = parseFloat((amount * rate * time) / 365);
         result = parseFloat(amount + interest);
     }else if((interest_form == "compound") && (time_measure == "years")){
         result = 1 + rate;
         result = result ** time;
         result *= amount;
     }else if((interest_form == "compound") && (time_measure == "months")){
-        result = 1 + (rate/12);
-        result = result ** time;
+        result = parseFloat(1 + (rate/12));
+        result = parseFloat(result ** time);
         result *= amount;
     }else if((interest_form == "compound") && (time_measure == "days")){
-        result = 1 + rate;
-        result = result ** time;
+        result = parseFloat(1 + (rate/365));
+        result = parseFloat(result ** time);
         result *= amount;
     }
 
-
+    result = result.toFixed(2);
     return `${currency_type}${result}`;
 }
 
@@ -114,8 +115,7 @@ computeInterest.addEventListener("click", () =>{
         }else if(document.querySelector("div.active").classList.contains("years")){
             timeframe = "years";
         }
-    }
-    
+    }    
 
     console.log(calculateInterest(principal_amount, rate, number_of_x, timeframe, interest_type, currency_symbol));
 })
