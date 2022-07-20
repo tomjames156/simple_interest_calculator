@@ -58,32 +58,14 @@ select{
     border-radius: 0.45rem;
 }
 
-/* input[type="range"]{
-    cursor: pointer;
-    -webkit-appearance: none;
-    width: 150px;
-    background-color: white;
-}
-
-input[type="range"]::-webkit-slider-runnable-track{
-    background-color: green;
-    height: 10px;
-    border-radius: 5px;
-}
-
-input[type="range"]::-webkit-slider-thumb{
-    -webkit-appearance: none;
-    appearance: none;
-    margin-top: -3px;
-    background-color: darkgreen;
-    height: 16px;
-    width: 16px;   
-    border-radius: 8px;
-} */
-
 div.rate{
     display: flex;
     align-items: center;
+    column-gap: 1rem;
+}
+
+div.rate div{
+    display: flex;
     column-gap: 1rem;
 }
 
@@ -96,4 +78,25 @@ div.submit button{
     color: white;
     text-shadow: 1px 1px 3px black;
     font-weight: bold;
+}
+
+@media screen and (max-width: 420px){
+    body{
+        width: 96%;
+        padding: 2rem 0 0 0;
+        margin: 0 auto;
+        font-family: "Poppins", sans-serif;
+    }
+
+    div.interest-type{
+        display: flex;
+        flex-direction: column;
+    }
+
+    div.rate{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
