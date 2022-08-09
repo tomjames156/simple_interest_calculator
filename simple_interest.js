@@ -1,5 +1,4 @@
-const yearsOptions = document.querySelector("select#years");
-const monthsOptions = document.querySelector("select#months");
+'use strict';
 const infoBtn = document.querySelector("i.fa-circle-info");
 const principalDef = document.querySelector("p.principal-meaning");
 const timeframeOptions = document.querySelectorAll("div.time div.time-frames div > input");
@@ -12,15 +11,6 @@ const simple = document.getElementById("simple");
 const compound = document.getElementById("compound");
 const computeInterest = document.getElementById("submit");
 const interest = document.getElementById("result");
-
-function addOptions(start, stop, receiver, option){
-    for(i = start; i < (stop + 1); i++){
-        receiver.innerHTML += `<option  id="${option + '-' + i}" value='${i}'>${i}</option>`;
-    }
-}
-
-addOptions(1, 100, yearsOptions, "year");
-addOptions(1, 12, monthsOptions, "month");
 
 function resetshownTimeFrameOptions(){
     let timeframes = ['days', 'months', 'years'];
@@ -78,21 +68,25 @@ function calculateInterest(amount, percentage, time, time_measure, interest_form
         interest = parseFloat(amount * rate * time);
         result = parseFloat(amount + interest);
     }else if((interest_form == "simple") && (time_measure == "months")){
-        interest = parseFloat((amount * rate * time) / 12);
+        // interest = parseFloat((amount * rate * time) / 12);
+        interest = parseFloat(amount * rate * time);
         result = parseFloat(amount + interest);
     }else if((interest_form == "simple") && (time_measure == "days")){
-        interest = parseFloat((amount * rate * time) / 365);
+        // interest = parseFloat((amount * rate * time) / 365);
+        interest = parseFloat(amount * rate * time)
         result = parseFloat(amount + interest);
     }else if((interest_form == "compound") && (time_measure == "years")){
-        result = 1 + rate;
-        result = result ** time;
+        result = parseFloat(1 + rate);
+        result = parseFloat(result ** time);
         result *= amount;
     }else if((interest_form == "compound") && (time_measure == "months")){
-        result = parseFloat(1 + (rate / 12));
+        result = parseFloat(1 + rate);
+        // result = parseFloat(1 + (rate / 12));
         result = parseFloat(result ** time);
         result *= amount;
     }else if((interest_form == "compound") && (time_measure == "days")){
-        result = parseFloat(1 + (rate / 365));
+        result = parseFloat(1 + rate);
+        // result = parseFloat(1 + (rate / 365));
         result = parseFloat(result ** time);
         result *= amount;
     }
@@ -118,15 +112,16 @@ computeInterest.addEventListener("click", () =>{
 
     if(document.querySelector("div.active input")){
         number_of_x = parseInt(document.querySelector("div.active input").value);
-        timeframe = "days";
-    }else if(document.querySelector("div.active select")){
-        number_of_x = parseInt(document.querySelector("div.active select").value);
-        if(document.querySelector("div.active").classList.contains("months")){
+        
+        if(document.querySelector("div.active").classList.contains("days")){
+            timeframe = "days";
+        }
+        else if(document.querySelector("div.active").classList.contains("months")){
             timeframe = "months"
         }else if(document.querySelector("div.active").classList.contains("years")){
             timeframe = "years";
         }
-    }    
+    }  
 
     if((simple.checked == false) && (compound.checked == false)){
         alert("Choose a type of interest");
@@ -135,8 +130,8 @@ computeInterest.addEventListener("click", () =>{
     total_amount = (calculateInterest(principal_amount, rate, number_of_x, timeframe, interest_type, currency_symbol));
     interest_amount = (total_amount.slice(1, total_amount.length) - principal_amount).toFixed(2)
 
-    interest.innerHTML = `<br> Principal Invested = ${principal_amount} <br>
-    Investment rate per ${timeframe.slice(0, timeframe.length -1)} = ${rate}<br>
+    interest.innerHTML = `<br> Principal Invested = ${currency_symbol}${principal_amount} <br>
+    Investment rate per ${timeframe.slice(0, timeframe.length -1)} = ${rate} %<br>
     Number of times interest was collected = ${number_of_x}<br>
     Total amount after interest = ${total_amount}<br>
     Total interest after investment = $${interest_amount}
